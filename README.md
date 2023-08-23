@@ -19,10 +19,15 @@ _____________________________________
 ### Git setup:
 - [Generate new ssh key with](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent):
 ```sh 
-ssh-keygen -t ed25519 -C "your_email@example.com" 
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+eval "$(ssh-agent -s)" - Start the ssh-agent in the background.
+
+ssh-add ~/.ssh/id_ed25519 - Add your SSH private key to the ssh-agent.
+
+cat ~/.ssh/id_ed25519.pub - Get public key in terminal, copy all line including "your_email@example.com"
 ```
 - [Add ssh key to your git account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
-    - Copy your ssh key file contents (`~/.ssh/id_ed25519.pub` by default)
     - [Open git's `keys` page](https://github.com/settings/keys)
     - Click `New SSH key`, fill `Title` & `Key`
 - Set `email` & `username`:
@@ -57,11 +62,14 @@ ________________________________
 
 ``` 
 git remote add academy git@github.com:optimaxdev/ta-academy_2.git
-git config pull.rebase false
 ```
 - academy - short name to your remote repository
 - git@github.com:optimaxdev/ta-academy_2.git - path to the remote repository by SSH
 
+Then run this command:
+``` 
+git config pull.rebase false
+```
 
 2) Checkout to the new branch related to the lesson(e.g. "homework_1"):
 
