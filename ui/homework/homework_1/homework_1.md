@@ -1,6 +1,6 @@
 ## Homework_1
-- Add your name in [homework_1_name.md](homework_1_name.md)
 - Install dependencies
+
 ```sh
 yarn
 ```
@@ -15,5 +15,6 @@ yarn tslint
 ```sh
 yarn eslint
 ```
-
+- Add your name in [homework_1_name.md](homework_1_name.md)
+- Fix type in [test1.ts](test1.ts)
 - Create pull request 

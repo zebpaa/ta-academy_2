@@ -43,7 +43,7 @@ Create a fork from the root repository [ta-academy_2](https://github.com/optimax
 
 ![fork.png](images%2Ffork.png)
 
-Then add collaborators:
+Then go to `Settings` and add collaborators:
 
 ![collaborators.png](images%2Fcollaborators.png)
 
