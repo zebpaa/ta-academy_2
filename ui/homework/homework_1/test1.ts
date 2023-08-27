@@ -5,7 +5,7 @@
 
 type Person = {
   name?: string;
-  age?: number | 'unknown';
+  age?: number;
   isSuperHero?: boolean;
   occupation?: string;
 };
@@ -23,7 +23,7 @@ const users: Person[] = [
   },
   {
     name: 'Batman',
-    age: 'unknown',
+    // age: 'unknown',
     isSuperHero: true,
     occupation: 'vigilante',
   },
