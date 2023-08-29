@@ -1,15 +1,20 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
     project: ['./tsconfig.json'],
   },
   rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
+        parser: 'flow',
+        endOfLine: 'auto',
+      },
+    ],
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/await-thenable': 'error',
