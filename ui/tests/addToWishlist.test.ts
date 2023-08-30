@@ -12,7 +12,6 @@ test.describe('add a product to my pick on the sunglasses page', () => {
 
     // // Wait when all page`s elemenets will load
     // await page.waitForLoadState('load');
-    // Something
 
     // Wait when page`s elemenets will load. If the timer is not enough, you can wait the download of all elements. Look to up.
     await page.waitForTimeout(5000);

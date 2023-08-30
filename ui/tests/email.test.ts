@@ -14,7 +14,7 @@ test.describe('testing case when we are fill email success', () => {
     await test.step('scroll to footer, sign up email', async () => {
       const emailInput = page.locator('//footer//div//input');
       // Every time you need to change the email to one that has not yet been entered (+1)
-      await emailInput.fill('test15@yandex.ru');
+      await emailInput.fill('test16@yandex.ru');
 
       // Scroll to down that see success message
       await page.mouse.wheel(0, 5000);
