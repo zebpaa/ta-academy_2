@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "lint-fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "start": "yarn ts-node src/index.ts",
     "tslint": "tsc --noEmit",
     "eslint": "eslint ./",
@@ -12,6 +13,7 @@
     "debug": "yarn test --debug"
   },
   "dependencies": {
+    "@types/node": "^20.5.7",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "deep-match2": "^1.0.1",
