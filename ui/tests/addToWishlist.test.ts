@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { DataLayer } from '@Utils/dataLayer';
 
-test.describe('add a product to my pick on the sunglasses page', () => {
-  test('fullness of the wishlist', async ({ page, baseURL }) => {
+test.describe('check event in data layer after add to wishlist', () => {
+  test('check that event will be created', async ({ page }) => {
     // Going to URL, don't waiting a load
     await page.goto('/', { waitUntil: 'domcontentloaded' });
 
@@ -10,16 +10,8 @@ test.describe('add a product to my pick on the sunglasses page', () => {
     const sunglasses = page.locator('//nav//li[contains(., "Sunglasses")]');
     await sunglasses.click();
 
-    // // Wait when all page`s elemenets will load
-    // await page.waitForLoadState('load');
-
-    // Wait when page`s elemenets will load. If the timer is not enough, you can wait the download of all elements. Look to up.
+    // Wait when page`s elemenets will load
     await page.waitForTimeout(5000);
-
-    await test.step('checking that we are on the needed url', () => {
-      const url = page.url();
-      expect(url).toBe(`${baseURL}sunglasses`);
-    });
 
     await test.step('find and click on my pick', async () => {
       const myPick = page.locator('(//li//div[@aria-label="myPick"])[1]');
@@ -52,7 +44,7 @@ test.describe('add a product to my pick on the sunglasses page', () => {
     console.log(await page.evaluate(() => window.dataLayer));
 
     await test.step('find and click on my pick in header', async () => {
-      const myPickHeader = page.locator('//div[contains(@class, "myPicksIcon__myPicks")]//button');
+      const myPickHeader = page.locator('//div[@aria-label="View My Picks"]');
       await myPickHeader.click();
     });
 

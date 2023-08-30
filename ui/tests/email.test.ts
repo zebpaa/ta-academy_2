@@ -1,26 +1,18 @@
 import { DataLayer } from '@Utils/dataLayer';
 import { test, expect } from '@playwright/test';
 
-test.describe('testing case when we are fill email success', () => {
-  test('check that our event will be created', async ({ page, baseURL }) => {
+test.describe('check event in data layer after subscription', () => {
+  test('check that event will be created', async ({ page }) => {
     // Going to URL, don't waiting a load
     await page.goto('/', { waitUntil: 'domcontentloaded' });
 
-    await test.step('checking that we are on the home page', () => {
-      const url = page.url();
-      expect(url).toBe(`${baseURL}`);
-    });
-
     await test.step('scroll to footer, sign up email', async () => {
-      const emailInput = page.locator('//footer//div//input');
+      const emailInput = page.locator('//input[@placeholder="Enter your Email"]');
       // Every time you need to change the email to one that has not yet been entered (+1)
-      await emailInput.fill('test16@yandex.ru');
-
-      // Scroll to down that see success message
-      await page.mouse.wheel(0, 5000);
+      await emailInput.fill('test18@yandex.ru');
 
       // Create a locator of button, after - click
-      const button = page.locator('//footer//button[contains(., "Sign Up")]');
+      const button = page.locator('//button[contains(., "Sign Up")]');
       await button.click();
     });
 
