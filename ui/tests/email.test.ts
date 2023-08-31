@@ -7,7 +7,7 @@ test.describe('check event in data layer after subscription', () => {
     await page.goto('/', { waitUntil: 'domcontentloaded' });
 
     await test.step('scroll to footer, sign up email', async () => {
-      const emailInput = page.locator('//input[@placeholder="Enter your Email"]');
+      const emailInput = page.locator('//footer//input[@placeholder="Enter your Email"]');
       // Every time you need to change the email to one that has not yet been entered (+1)
       await emailInput.fill('test18@yandex.ru');
 

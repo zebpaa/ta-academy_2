@@ -11,10 +11,12 @@ test.describe('check event in data layer after add to wishlist', () => {
     await sunglasses.click();
 
     // Wait when page`s elemenets will load
-    await page.waitForTimeout(5000);
+    await page.waitForTimeout(3000);
 
     await test.step('find and click on my pick', async () => {
-      const myPick = page.locator('(//li//div[@aria-label="myPick"])[1]');
+      // Take 1st product with destructuring, after take myPick and click
+      const [product] = await page.locator('[data-test-name="product"]').all();
+      const myPick = product.locator('//div[@aria-label="myPick"]');
       await myPick.click();
 
       // Check the myPick`s attribute exists aria-pressed="true"
@@ -48,8 +50,8 @@ test.describe('check event in data layer after add to wishlist', () => {
       await myPickHeader.click();
     });
 
-    // Started timeout for 5 sec
-    await page.waitForTimeout(5000);
+    // Started timeout for 3 sec
+    await page.waitForTimeout(3000);
 
     // Created a locator of product and checked product are on the wishlist
     const product = page.locator('//li[@data-test-name="itemMyPicks"]');
