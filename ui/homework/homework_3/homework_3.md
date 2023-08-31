@@ -20,7 +20,7 @@
 
 4. Then go to My Account: 
 
-![myaccountdetails.png](..%2F..%2F..%2Fimages%2Fmyaccountdetails.png)
+![wellcome.png](/images/welome.png)
 
 5. Click My Details, change info (e.g. First Name, Last Name). Check that info changed to yours.
 
