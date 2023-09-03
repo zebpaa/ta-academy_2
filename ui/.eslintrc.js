@@ -13,6 +13,7 @@ module.exports = {
         singleQuote: true,
         parser: 'flow',
         endOfLine: 'auto',
+        parser: 'typescript',
       },
     ],
     '@typescript-eslint/explicit-member-accessibility': 'error',

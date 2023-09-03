@@ -1,5 +1,7 @@
 import { DataLayer } from '@Utils/dataLayer';
 import { test, expect } from '@playwright/test';
+// Using Faker
+import { faker } from '@faker-js/faker';
 
 test.describe('check event in data layer after subscription', () => {
   test('check that event will be created', async ({ page }) => {
@@ -8,8 +10,9 @@ test.describe('check event in data layer after subscription', () => {
 
     await test.step('scroll to footer, sign up email', async () => {
       const emailInput = page.locator('//footer//input[@placeholder="Enter your Email"]');
-      // Every time you need to change the email to one that has not yet been entered (+1)
-      await emailInput.fill('test18@yandex.ru');
+      // Create a random email address
+      const randomEmail = faker.internet.email();
+      await emailInput.fill(randomEmail);
 
       // Create a locator of button, after - click
       const button = page.locator('//button[contains(., "Sign Up")]');
