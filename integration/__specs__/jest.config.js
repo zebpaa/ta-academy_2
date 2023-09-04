@@ -23,10 +23,5 @@ module.exports = {
     },
     globals: {
         __NODEJS__: false,
-        'ts-jest': {
-            diagnostics: {
-                pathRegex: '__specs__',
-            },
-        },
     },
 };
