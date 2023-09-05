@@ -11,6 +11,18 @@ cd integration/
 yarn
 ```
 
+- Go to the specs folder
+
+```sh
+cd integration/
+```
+
+- Install dependencies
+
+```sh
+yarn
+```
+
 # Test Case:
 - Open cart page
 
