@@ -3,18 +3,21 @@ import { expect } from '@playwright/test';
 // Using Faker
 import { faker } from '@faker-js/faker';
 
-export class MyDetails extends Component {
+export class EditInfo extends Component {
     protected LOCATORS = {
-        editInfo: this.locator.locator('//button[contains(.,"Edit Information")]'),
+        editInfoButton: this.locator.locator('//button[contains(.,"Edit Information")]'),
         firstNameLoc: this.locator.getByPlaceholder('First name'),
         lastNameLoc: this.locator.getByPlaceholder('Last name'),
         saveButton: this.locator.locator('//button[contains(.,"Save")]'),
     };
 
-    // Function that changes account`s info
-    public async editAccount() {
-        await this.LOCATORS.editInfo.click();
+    // Function that click on 'edit information'
+    public async goToEditInfo(): Promise<void> {
+        await this.LOCATORS.editInfoButton.click();
+    }
 
+    // Function that changes account`s info
+    public async editAccount(): Promise<void> {
         // Create new data
         const newUserInfo = {
             firstName: faker.person.firstName(),
@@ -28,6 +31,7 @@ export class MyDetails extends Component {
         const lastNameInput = this.LOCATORS.lastNameLoc;
         await lastNameInput.fill(newUserInfo.lastName);
 
+        // Click on 'Save'
         await this.LOCATORS.saveButton.click();
 
         // Check changed info

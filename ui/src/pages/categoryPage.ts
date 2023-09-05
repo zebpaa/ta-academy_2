@@ -1,4 +1,4 @@
-import { TheHeader } from '@Components/theHeader';
+import { TheHeader } from '@Components/theHeader/theHeader';
 import { Container } from '@Core/container';
 import type { Locator } from '@playwright/test';
 

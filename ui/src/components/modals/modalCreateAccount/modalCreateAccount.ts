@@ -2,7 +2,7 @@ import { Component } from '@Core/component';
 // Using Faker
 import { faker } from '@faker-js/faker';
 
-export class CreateAccount extends Component {
+export class ModalCreateAccount extends Component {
     protected LOCATORS = {
         firstNameInput: this.locator.getByPlaceholder('First name'),
         lastNameInput: this.locator.getByPlaceholder('Last name'),
@@ -11,7 +11,7 @@ export class CreateAccount extends Component {
     };
 
     // Function that creates an account
-    public async createAccount() {
+    public async createAccount(): Promise<void> {
         // Create data
         const createUser = {
             firstName: faker.person.firstName(),

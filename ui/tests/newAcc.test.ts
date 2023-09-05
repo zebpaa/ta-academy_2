@@ -1,6 +1,11 @@
 import { test, expect } from '@Test';
 
-test('check event in data layer after create account', async ({ homePage, dataLayer }) => {
+test('check event in data layer after create account', async ({
+    homePage,
+    accountPage,
+    page,
+    dataLayer,
+}) => {
     // Going to URL, don't waiting a load
     await homePage.open();
 
@@ -11,7 +16,8 @@ test('check event in data layer after create account', async ({ homePage, dataLa
         // Click on 'Create Account'
         await homePage.TheHeader.MyAccountButton.createAccount();
         // Fill email and click on 'Sign Up'
-        await homePage.TheHeader.MyAccountButton.SignUp.clickSignUp();
+        await homePage.ModalSignUp.clickSignUp();
+        await homePage.ModalCreateAccount.createAccount();
     });
 
     await test.step('get event in data layer', async () => {
@@ -40,8 +46,9 @@ test('check event in data layer after create account', async ({ homePage, dataLa
         await homePage.TheHeader.goToWelcome();
         await homePage.TheHeader.WelcomeButton.goToMyAcc();
 
-        // // Edit account
-        // await accountPage.goToMyDetails();
-        // await accountPage.MyDetails.editAccount();
+        // Edit account
+        await accountPage.MyDetails.goToMyDetails();
+        await accountPage.EditInfo.goToEditInfo();
+        await accountPage.EditInfo.editAccount();
     });
 });
