@@ -1,21 +1,27 @@
+import { TheHeader } from '@Components/theHeader';
 import { Container } from '@Core/container';
 import type { Locator } from '@playwright/test';
 
 export class CategoryPage extends Container {
-  protected LOCATORS = {
-    product: this.page.locator('[data-test-name="product"]'),
-    footer: this.page.locator('//footer[contains(., "Live Chat" )]'),
-  };
+    protected LOCATORS = {
+        product: this.page.locator('[data-test-name="product"]'),
+        footer: this.page.locator('//footer[contains(., "Live Chat" )]'),
+        theHeader: this.page.locator('//header'),
+    };
 
-  public async open(url: 'contact-lenses' | 'sunglasses' | 'eyeglasses-collection'): Promise<void> {
-    await this.page.goto(`/${url}`, { waitUntil: 'domcontentloaded' });
-  }
+    public TheHeader = new TheHeader(this.LOCATORS.theHeader, this.page);
 
-  public async scrollProducts(): Promise<void> {
-    await this.LOCATORS.footer.scrollIntoViewIfNeeded();
-  }
+    public async open(
+        url: 'contact-lenses' | 'sunglasses' | 'eyeglasses-collection'
+    ): Promise<void> {
+        await this.page.goto(`/${url}`, { waitUntil: 'domcontentloaded' });
+    }
 
-  public async getProducts(): Promise<Locator[]> {
-    return await this.LOCATORS.product.all();
-  }
+    public async scrollProducts(): Promise<void> {
+        await this.LOCATORS.footer.scrollIntoViewIfNeeded();
+    }
+
+    public async getProducts(): Promise<Locator[]> {
+        return await this.LOCATORS.product.all();
+    }
 }
