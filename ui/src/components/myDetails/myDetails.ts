@@ -1,7 +1,8 @@
 import { Component } from '@Core/component';
-import { expect } from '@playwright/test';
+// import { expect } from '@playwright/test';
 // Using Faker
 import { faker } from '@faker-js/faker';
+import type { Locator } from '@playwright/test';
 
 export class MyDetails extends Component {
     protected LOCATORS = {
@@ -17,7 +18,10 @@ export class MyDetails extends Component {
     }
 
     // Function that changes account`s info
-    public async editAccount(): Promise<void> {
+    public async editAccount(): Promise<{
+        firstName: string;
+        lastName: string;
+    }> {
         // Create new data
         const newUserInfo = {
             firstName: faker.person.firstName(),
@@ -34,8 +38,14 @@ export class MyDetails extends Component {
         // Click on 'Save'
         await this.LOCATORS.saveButton.click();
 
-        // Check changed info
-        await expect(firstNameInput).toHaveValue(newUserInfo.firstName);
-        await expect(lastNameInput).toHaveValue(newUserInfo.lastName);
+        return newUserInfo;
+    }
+
+    public getFirstNameInput(): Locator {
+        return this.LOCATORS.firstNameLoc;
+    }
+
+    public getLastNameInput(): Locator {
+        return this.LOCATORS.lastNameLoc;
     }
 }

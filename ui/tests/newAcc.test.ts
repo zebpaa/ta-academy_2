@@ -49,6 +49,14 @@ test('check event in data layer after create account', async ({
         // Edit account
         await accountPage.MyProfile.goToMyDetails();
         await accountPage.MyDetails.goToEditInfo();
-        await accountPage.MyDetails.editAccount();
+
+        const newUserInfo = await accountPage.MyDetails.editAccount();
+
+        // Check changed info
+        const firstNameInput = accountPage.MyDetails.getFirstNameInput();
+        const lastNameInput = accountPage.MyDetails.getLastNameInput();
+
+        await expect(firstNameInput).toHaveValue(newUserInfo.firstName);
+        await expect(lastNameInput).toHaveValue(newUserInfo.lastName);
     });
 });
