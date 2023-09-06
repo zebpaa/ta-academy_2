@@ -1,7 +1,7 @@
 import { test, expect } from '@Test';
 
 test.describe('check event in data layer after subscription', () => {
-    test('check that event will be created', async ({ homePage, dataLayer, page }) => {
+    test('check that event will be created', async ({ homePage, dataLayer }) => {
         // Going to URL, don't waiting a load
         await homePage.open();
 
@@ -27,7 +27,5 @@ test.describe('check event in data layer after subscription', () => {
 
         // Checking that event strictly equal to expected event
         expect(event).toStrictEqual(expectedEvent);
-
-        await page.waitForTimeout(10000);
     });
 });
