@@ -9,14 +9,15 @@ test('check event in data layer after create account', async ({
     await homePage.open();
 
     await test.step('create account', async () => {
-        // Also login in the account
         // Hover on 'My Account'
         await homePage.Header.goToDropDown();
         // Click on 'Create Account'
         await homePage.Header.AccountDropDown.createAccount();
         // Fill email and click on 'Sign Up'
+        await homePage.Modal.fillEmail();
         await homePage.Modal.clickSignUp();
-        await homePage.Modal.createAccount();
+        await homePage.Modal.fillPersonalInfo();
+        await homePage.Modal.clickSignUp();
     });
 
     await test.step('get event in data layer', async () => {
