@@ -3,7 +3,6 @@ import { test, expect } from '@Test';
 test('check event in data layer after create account', async ({
     homePage,
     accountPage,
-    page,
     dataLayer,
 }) => {
     // Going to URL, don't waiting a load
@@ -12,12 +11,12 @@ test('check event in data layer after create account', async ({
     await test.step('create account', async () => {
         // Also login in the account
         // Hover on 'My Account'
-        await homePage.TheHeader.goToMyAcc();
+        await homePage.Header.goToDropDown();
         // Click on 'Create Account'
-        await homePage.TheHeader.MyAccountButton.createAccount();
+        await homePage.Header.AccountDropDown.createAccount();
         // Fill email and click on 'Sign Up'
-        await homePage.ModalSignUp.clickSignUp();
-        await homePage.ModalCreateAccount.createAccount();
+        await homePage.Modal.clickSignUp();
+        await homePage.Modal.createAccount();
     });
 
     await test.step('get event in data layer', async () => {
@@ -43,12 +42,12 @@ test('check event in data layer after create account', async ({
 
     await test.step('change info in account and after check that info is changed', async () => {
         // Go to the account
-        await homePage.TheHeader.goToWelcome();
-        await homePage.TheHeader.WelcomeButton.goToMyAcc();
+        await homePage.Header.goToDropDown();
+        await homePage.Header.AccountDropDown.goToMyAcc();
 
         // Edit account
-        await accountPage.MyDetails.goToMyDetails();
-        await accountPage.EditInfo.goToEditInfo();
-        await accountPage.EditInfo.editAccount();
+        await accountPage.MyProfile.goToMyDetails();
+        await accountPage.MyDetails.goToEditInfo();
+        await accountPage.MyDetails.editAccount();
     });
 });

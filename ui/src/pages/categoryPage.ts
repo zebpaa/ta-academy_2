@@ -1,4 +1,4 @@
-import { TheHeader } from '@Components/theHeader/theHeader';
+import { Header } from '@Components/header/header';
 import { Container } from '@Core/container';
 import type { Locator } from '@playwright/test';
 
@@ -6,10 +6,10 @@ export class CategoryPage extends Container {
     protected LOCATORS = {
         product: this.page.locator('[data-test-name="product"]'),
         footer: this.page.locator('//footer[contains(., "Live Chat" )]'),
-        theHeader: this.page.locator('//header'),
+        header: this.page.locator('//header[@id = "page-header"]'),
     };
 
-    public TheHeader = new TheHeader(this.LOCATORS.theHeader, this.page);
+    public Header = new Header(this.LOCATORS.header, this.page);
 
     public async open(
         url: 'contact-lenses' | 'sunglasses' | 'eyeglasses-collection'
