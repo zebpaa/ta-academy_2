@@ -1,3 +1,4 @@
+import { Product } from '@Components/product/product';
 import { Header } from '@Components/header/header';
 import { Container } from '@Core/container';
 import type { Locator } from '@playwright/test';
@@ -10,6 +11,7 @@ export class CategoryPage extends Container {
     };
 
     public Header = new Header(this.LOCATORS.header, this.page);
+    public Product = new Product(this.LOCATORS.product, this.page);
 
     public async open(
         url: 'contact-lenses' | 'sunglasses' | 'eyeglasses-collection'

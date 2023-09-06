@@ -4,6 +4,7 @@ test('check event in data layer after create account', async ({
     homePage,
     accountPage,
     dataLayer,
+    page,
 }) => {
     // Going to URL, don't waiting a load
     await homePage.open();
@@ -54,9 +55,13 @@ test('check event in data layer after create account', async ({
 
         // Check changed info
         const firstNameInput = accountPage.MyDetails.getFirstNameInput();
+        console.log(firstNameInput);
         const lastNameInput = accountPage.MyDetails.getLastNameInput();
+        console.log(lastNameInput);
 
         await expect(firstNameInput).toHaveValue(newUserInfo.firstName);
         await expect(lastNameInput).toHaveValue(newUserInfo.lastName);
+
+        await page.waitForTimeout(5000);
     });
 });
