@@ -4,7 +4,6 @@ test('check event in data layer after create account', async ({
     homePage,
     accountPage,
     dataLayer,
-    page,
 }) => {
     // Going to URL, don't waiting a load
     await homePage.open();
