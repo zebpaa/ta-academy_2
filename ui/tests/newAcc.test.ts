@@ -51,17 +51,13 @@ test('check event in data layer after create account', async ({
         await accountPage.MyProfile.goToMyDetails();
         await accountPage.MyDetails.goToEditInfo();
 
+        // Put values from component`s methods into variables
         const newUserInfo = await accountPage.MyDetails.editAccount();
+        const valueOfFirstNameInput = await accountPage.MyDetails.getValueFirstNameInput();
+        const valueOfLastNameInput = await accountPage.MyDetails.getValueLastNameInput();
 
-        // Check changed info
-        const firstNameInput = accountPage.MyDetails.getFirstNameInput();
-        console.log(firstNameInput);
-        const lastNameInput = accountPage.MyDetails.getLastNameInput();
-        console.log(lastNameInput);
-
-        await expect(firstNameInput).toHaveValue(newUserInfo.firstName);
-        await expect(lastNameInput).toHaveValue(newUserInfo.lastName);
-
-        await page.waitForTimeout(5000);
+        // Сheck that the values have changed to those that I entered
+        expect(valueOfFirstNameInput).toStrictEqual(newUserInfo.firstName);
+        expect(valueOfLastNameInput).toStrictEqual(newUserInfo.lastName);
     });
 });

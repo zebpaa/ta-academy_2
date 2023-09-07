@@ -8,6 +8,7 @@ export class CategoryPage extends Container {
         product: this.page.locator('[data-test-name="product"]'),
         footer: this.page.locator('//footer[contains(., "Live Chat" )]'),
         header: this.page.locator('//header[@id = "page-header"]'),
+        myPick: this.page.locator('//div[@aria-label="myPick"]'),
     };
 
     public Header = new Header(this.LOCATORS.header, this.page);
