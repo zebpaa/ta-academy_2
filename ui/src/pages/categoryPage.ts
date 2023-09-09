@@ -1,16 +1,23 @@
+import { Product } from '@Components/product/product';
+import { Header } from '@Components/header/header';
 import { Container } from '@Core/container';
 import type { Locator } from '@playwright/test';
 
 export class CategoryPage extends Container {
     protected LOCATORS = {
         product: this.page.locator('[data-test-name="product"]'),
+        firstProduct: this.page.locator('[data-test-name="product"]').first(),
         footer: this.page.locator('//footer[contains(., "Live Chat" )]'),
+        header: this.page.locator('//header[@id = "page-header"]'),
     };
+
+    public Header = new Header(this.LOCATORS.header, this.page);
+    public Product = new Product(this.LOCATORS.firstProduct, this.page);
 
     public async open(
         url: 'contact-lenses' | 'sunglasses' | 'eyeglasses-collection'
     ): Promise<void> {
-        await this.page.goto(`/${url}`, { waitUntil: 'domcontentloaded' });
+        await this.page.goto(`/${url}`, { waitUntil: 'load' });
     }
 
     public async scrollProducts(): Promise<void> {

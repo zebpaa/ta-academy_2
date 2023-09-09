@@ -1,7 +1,7 @@
 import { test, expect } from '@Test';
 
 test.describe('check event in Datalayer', () => {
-    test('check evets after scroll and click magazines', async ({ homePage, page, dataLayer }) => {
+    test('check events after scroll and click magazines', async ({ homePage, page, dataLayer }) => {
         await homePage.open();
         await homePage.FeaturedIn.scrollToSection();
 
