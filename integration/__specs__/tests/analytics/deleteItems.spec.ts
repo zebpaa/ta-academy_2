@@ -58,10 +58,32 @@ describe('Check dataLayer event on cart page', () => {
         reporter.endStep();
 
         const list = await cartPage.getCartList();
+        const items = await list.getCartItems(); // Get array of items
+
+        reporter.startStep('Check that the values of inputs are equal to values what we entered');
+        const valueOfPriceInput = Number(priceInput.getAttribute('value'));
+        const valueOfQuantityInput = Number(quantityInput.getAttribute('value'));
+
+        expect(nameInput.getAttribute('value')).toStrictEqual(random.name);
+        expect(valueOfPriceInput).toStrictEqual(random.price);
+        expect(valueOfQuantityInput).toStrictEqual(random.quantity);
+        reporter.endStep();
+
+        reporter.startStep('Checking that the length of the carsList array has increased by 1');
+        expect(items.length).toBe(4);
+        reporter.endStep();
 
         // First item
         const [item] = await list.getCartItems();
         await item.deleteItem();
+
+        // Need to get a new list of elements to verify that the element was removed
+        const newList = await cartPage.getCartList();
+        const newItems = await newList.getCartItems();
+
+        reporter.startStep('Check that the element that we removed is not on the page.');
+        expect(newItems.length).toBe(3);
+        reporter.endStep();
 
         reporter.startStep('Delete item event');
         const deleteItemEvent = await waitForDataLayer({ name: `Delete item - ${random.name}` });
@@ -77,9 +99,6 @@ describe('Check dataLayer event on cart page', () => {
             const [newItems] = await newList.getCartItems();
             await newItems.deleteItem();
         }
-
-        // const emptyList = await cartPage.getCartList();
-        // emptyList.debug(); // To check all deleted items
 
         reporter.startStep('Cart is Empty event');
         const deleteAllItemsEvent = await waitForDataLayer({ name: 'Cart is Empty' });
