@@ -7,7 +7,7 @@ export class CartPage extends Container {
         title: 'h1',
         cartList: './/div[@class="cart__list"]',
         addCart: './/button[contains(., "Add Cart Item")]',
-        modal: '[data-testid="form"]',
+        modal: '[data-testid="modal"]',
     };
 
     public async fulfill(): Promise<void> {
