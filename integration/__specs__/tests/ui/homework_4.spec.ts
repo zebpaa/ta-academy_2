@@ -38,7 +38,7 @@ describe('Open cart page, add cart item, fill all fields & press "Create"', () =
         priceInput.input(random.price.toString());
         quantityInput.input(random.quantity.toString());
 
-        cartModal.createCartItemButton(); // Click on 'Create'
+        await cartModal.createCartItemButton(); // Click on 'Create'
 
         const list = await cartPage.getCartList();
         const items = await list.getCartItems(); // Get array of items

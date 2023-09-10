@@ -1,6 +1,3 @@
-import { CartNameInput } from './cartNameInput/cartNameInput';
-import { CartPriceInput } from './cartPriceInput/cartPriceInput';
-import { CartQuantityInput } from './cartQuantityInput/cartQuantityInput';
 import { Component } from '@Core/component';
 
 export class CartModal extends Component {
@@ -11,19 +8,19 @@ export class CartModal extends Component {
         createButton: './/button[contains(.,"Create")]',
     };
 
-    public async getCartNameInput(): Promise<CartNameInput> {
+    public async getCartNameInput(): Promise<Component> {
         const [nameInput] = await this.element.waitForXpath(this.selectors.nameInput);
-        return new CartNameInput(nameInput);
+        return new Component(nameInput);
     }
 
-    public async getCartPriceInput(): Promise<CartPriceInput> {
+    public async getCartPriceInput(): Promise<Component> {
         const [priceInput] = await this.element.waitForXpath(this.selectors.priceInput);
-        return new CartPriceInput(priceInput);
+        return new Component(priceInput);
     }
 
-    public async getCartQuantityInput(): Promise<CartQuantityInput> {
+    public async getCartQuantityInput(): Promise<Component> {
         const [quantityInput] = await this.element.waitForXpath(this.selectors.quantityInput);
-        return new CartQuantityInput(quantityInput);
+        return new Component(quantityInput);
     }
 
     public async createCartItemButton(): Promise<void> {
