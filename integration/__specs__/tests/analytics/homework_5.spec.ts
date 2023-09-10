@@ -41,10 +41,9 @@ describe('Check dataLayer event on cart page', () => {
         const quantityInput = await cartModal.getCartQuantityInput();
 
         // Filling fields
-        const name = 'Bike';
-        nameInput.input(random.name);
-        priceInput.input(random.price.toString());
-        quantityInput.input(random.quantity.toString());
+        await nameInput.input(random.name);
+        await priceInput.input(random.price.toString());
+        await quantityInput.input(random.quantity.toString());
 
         await cartModal.createCartItemButton(); // Click on 'Create'
 
@@ -65,7 +64,7 @@ describe('Check dataLayer event on cart page', () => {
 
         // // First item
         // const [item] = await list.getCartItems();
-        // item.deleteItem();
+        // await item.deleteItem();
 
         // reporter.startStep('Delete item - "your item name" event');
         // const deleteItemEvent = await waitForDataLayer({ name: "Delete item - 'your item name'" });
