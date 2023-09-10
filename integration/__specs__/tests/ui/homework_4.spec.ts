@@ -34,9 +34,9 @@ describe('Open cart page, add cart item, fill all fields & press "Create"', () =
         const quantityInput = await cartModal.getCartQuantityInput();
 
         // Filling fields
-        await nameInput.input(random.name);
-        await priceInput.input(random.price.toString());
-        await quantityInput.input(random.quantity.toString());
+        nameInput.input(random.name);
+        priceInput.input(random.price.toString());
+        quantityInput.input(random.quantity.toString());
 
         await cartModal.createCartItemButton(); // Click on 'Create'
 
@@ -45,16 +45,16 @@ describe('Open cart page, add cart item, fill all fields & press "Create"', () =
 
         
         reporter.startStep('Check that the values of inputs are equal to values what we entered');
-        const valueOfPriceInput = await Number(priceInput.getAttribute('value'));
-        const valueOfQuantityInput = await Number(quantityInput.getAttribute('value'))
+        const valueOfPriceInput = Number(priceInput.getAttribute('value'));
+        const valueOfQuantityInput = Number(quantityInput.getAttribute('value'))
 
-        expect(await nameInput.getAttribute('value')).toStrictEqual(random.name);
-        expect(await valueOfPriceInput).toStrictEqual(random.price);
-        expect(await valueOfQuantityInput).toStrictEqual(random.quantity);
+        expect(nameInput.getAttribute('value')).toStrictEqual(random.name);
+        expect(valueOfPriceInput).toStrictEqual(random.price);
+        expect(valueOfQuantityInput).toStrictEqual(random.quantity);
         reporter.endStep();
 
         reporter.startStep('Checking that the length of the carsList array has increased by 1');
-        expect(await items.length).toBe(4);
+        expect(items.length).toBe(4);
         reporter.endStep();
 
         // list.debug(); // To check the added item
@@ -68,7 +68,7 @@ describe('Open cart page, add cart item, fill all fields & press "Create"', () =
         const newItems = await newList.getCartItems();
 
         reporter.startStep('Check that the element that we removed is not on the page.');
-        expect(await newItems.length).toBe(3);
+        expect(newItems.length).toBe(3);
         reporter.endStep();
 
         // newList.debug(); // To check the removed item
