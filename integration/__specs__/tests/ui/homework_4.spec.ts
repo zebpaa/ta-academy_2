@@ -34,9 +34,9 @@ describe('Open cart page, add cart item, fill all fields & press "Create"', () =
         const quantityInput = await cartModal.getCartQuantityInput();
 
         // Filling fields
-        nameInput.input(random.name);
-        priceInput.input(random.price.toString());
-        quantityInput.input(random.quantity.toString());
+        await nameInput.input(random.name);
+        await priceInput.input(random.price.toString());
+        await quantityInput.input(random.quantity.toString());
 
         await cartModal.createCartItemButton(); // Click on 'Create'
 
@@ -45,8 +45,8 @@ describe('Open cart page, add cart item, fill all fields & press "Create"', () =
 
         
         reporter.startStep('Check that the values of inputs are equal to values what we entered');
-        const valueOfPriceInput = Number(priceInput.getAttribute('value'));
-        const valueOfQuantityInput = Number(quantityInput.getAttribute('value'))
+        const valueOfPriceInput = await Number(priceInput.getAttribute('value'));
+        const valueOfQuantityInput = await Number(quantityInput.getAttribute('value'))
 
         expect(await nameInput.getAttribute('value')).toStrictEqual(random.name);
         expect(await valueOfPriceInput).toStrictEqual(random.price);
@@ -54,21 +54,21 @@ describe('Open cart page, add cart item, fill all fields & press "Create"', () =
         reporter.endStep();
 
         reporter.startStep('Checking that the length of the carsList array has increased by 1');
-        await expect(items.length).toBe(4);
+        expect(await items.length).toBe(4);
         reporter.endStep();
 
         // list.debug(); // To check the added item
         
         // First item
         const [item] = await list.getCartItems();
-        item.deleteItem();
+        await item.deleteItem();
 
         // Need to get a new list of elements to verify that the element was removed
         const newList = await cartPage.getCartList();
         const newItems = await newList.getCartItems();
 
         reporter.startStep('Check that the element that we removed is not on the page.');
-        await expect(newItems.length).toBe(3);
+        expect(await newItems.length).toBe(3);
         reporter.endStep();
 
         // newList.debug(); // To check the removed item

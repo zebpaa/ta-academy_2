@@ -7,7 +7,7 @@ export class CartItem extends Component {
         priceForOne: './/div[contains(@class, "price-for-one")]',
         addButton: './/button[text()="+"]',
         removeButton: './/button[text()="-"]',
-        deleteButton: '[@data-testid="delete-btn"]',
+        deleteButton: '[data-testid="delete-btn"]',
     };
 
     public async getPrice(): Promise<number | undefined> {
