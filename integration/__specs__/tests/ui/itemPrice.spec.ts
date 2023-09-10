@@ -1,5 +1,5 @@
-import { CartPage } from '@Components/cartPage/cartPage';
 import { Mock } from '@Core/mock';
+import { CartPage } from '@Components/cartPage/cartPage';
 import { GetCartItemsMock } from '@Mocks/api/mockio/v1/id/get';
 
 describe('Check price of item', () => {
