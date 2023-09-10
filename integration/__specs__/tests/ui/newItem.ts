@@ -43,10 +43,9 @@ describe('Open cart page, add cart item, fill all fields & press "Create"', () =
         const list = await cartPage.getCartList();
         const items = await list.getCartItems(); // Get array of items
 
-        
         reporter.startStep('Check that the values of inputs are equal to values what we entered');
         const valueOfPriceInput = Number(priceInput.getAttribute('value'));
-        const valueOfQuantityInput = Number(quantityInput.getAttribute('value'))
+        const valueOfQuantityInput = Number(quantityInput.getAttribute('value'));
 
         expect(nameInput.getAttribute('value')).toStrictEqual(random.name);
         expect(valueOfPriceInput).toStrictEqual(random.price);
@@ -57,8 +56,6 @@ describe('Open cart page, add cart item, fill all fields & press "Create"', () =
         expect(items.length).toBe(4);
         reporter.endStep();
 
-        // list.debug(); // To check the added item
-        
         // First item
         const [item] = await list.getCartItems();
         await item.deleteItem();
@@ -70,7 +67,5 @@ describe('Open cart page, add cart item, fill all fields & press "Create"', () =
         reporter.startStep('Check that the element that we removed is not on the page.');
         expect(newItems.length).toBe(3);
         reporter.endStep();
-
-        // newList.debug(); // To check the removed item
     });
 });
