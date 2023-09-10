@@ -29,6 +29,6 @@
             "styles/*": ["../src/styles/*"]
         }
     },
-    "include": ["./modules", "./tests", "./types", "../typeScript", "jest-setup.ts"],
+    "include": ["./modules", "./tests", "./types", "../typeScript", "jest-setup.ts", "tests/analytics/homework_5.spec.ts"],
     "exclude": ["../typeScript/modules.d.ts", "../src"]
 }

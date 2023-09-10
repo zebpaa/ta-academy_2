@@ -7,7 +7,7 @@ export class CartPage extends Container {
         title: 'h1',
         cartList: './/div[@class="cart__list"]',
         addCart: './/button[contains(., "Add Cart Item")]',
-        modal: './/div[@class="modal"]',
+        modal: '[data-testid="form"]',
     };
 
     public async fulfill(): Promise<void> {
@@ -29,7 +29,7 @@ export class CartPage extends Container {
     }
 
     public async getCartModal(): Promise<CartModal> {
-        const [modal] = await document.waitForXpath(this.selectors.modal);
+        const [modal] = await document.waitForQuerySelector(this.selectors.modal);
         return new CartModal(modal);
     }
 }
